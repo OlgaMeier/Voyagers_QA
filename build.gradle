@@ -43,4 +43,3 @@ allureReport { // задаём новый адрес папки отчётов A
 allureReport { // перед созданием отчёта, удаляем старые результаты чтобы не мешались
     dependsOn cleanAllureReport
 }
-
