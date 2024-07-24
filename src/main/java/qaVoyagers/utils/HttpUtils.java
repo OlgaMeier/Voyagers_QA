@@ -1,4 +1,4 @@
-package voyagers.utils;
+package qaVoyagers.utils;
 
 import io.qameta.allure.Step;
 import io.restassured.builder.RequestSpecBuilder;
@@ -10,18 +10,22 @@ import java.util.Map;
 import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
-import static voyagers.utils.HttpUtils.HttpMethods.PUT;
-import static voyagers.utils.HttpUtils.HttpMethods.POST;
-import static voyagers.utils.HttpUtils.HttpMethods.GET;
-import static voyagers.utils.HttpUtils.HttpMethods.DELETE;
-import static voyagers.utils.HttpUtils.HttpMethods;
-import static voyagers.utils.Utils.isNullOrEmpty;
+import static qaVoyagers.utils.HttpUtils.HttpMethods.DELETE;
+import static qaVoyagers.utils.HttpUtils.HttpMethods.GET;
+import static qaVoyagers.utils.HttpUtils.HttpMethods.POST;
+import static qaVoyagers.utils.HttpUtils.HttpMethods.PUT;
+import static qaVoyagers.utils.Utils.isNullOrEmpty;
 
 
-public class HttpUtils {public static Properties properties = TestProperties.getINSTANCE().getProperties();
+public class HttpUtils {
+
+    public static Properties properties = TestProperties.getINSTANCE().getProperties();
     public static final String LOGIN_ENDPOINT = properties.getProperty("login.endpoint");
-    public static final String REGISTRATION_ENDPOINT = properties.getProperty("register.endpoint");
-    public static final String EVENTS_ENDPOINT = properties.getProperty("events.endpoint");
+    public static final String REGISTRATION_ENDPOINT = properties.getProperty("registration.endpoint");
+    public static final String CREATE_EVENT_ENDPOINT = properties.getProperty("createEvent.endpoint");
+    public static final String UPDATE_EVENT_ENDPOINT = properties.getProperty("updateEvent.endpoint");
+    public static final String DELETE_EVENT_ENDPOINT = properties.getProperty("deleteEvent.endpoint");
+    public static final String ADD_EVENT_COMMENTS_ENDPOINT = properties.getProperty("addEventComments.endpoin");
 
 
     public static <T> T postResponse(Object body, String endpoint, int statusCode, Class<T> responseClass) {
@@ -38,6 +42,10 @@ public class HttpUtils {public static Properties properties = TestProperties.get
 
     public static <T> T getResponse(String token, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(GET, endpoint, token, statusCode, null).as(responseClass);
+    }
+
+    public static <T> T getResponse(String token, String endpoint, String eventIdAndEndpoint, int statusCode, Class<T> responseClass) {
+        return getResponse(GET, endpoint + "/" + eventIdAndEndpoint, token, statusCode, null).as(responseClass);
     }
 
     public static <T> T deleteResponse(String token, String endpoint, int statusCode, Class<T> responseClass) {
@@ -103,8 +111,4 @@ public class HttpUtils {public static Properties properties = TestProperties.get
         PUT,
         DELETE
     }
-
-
 }
-
-

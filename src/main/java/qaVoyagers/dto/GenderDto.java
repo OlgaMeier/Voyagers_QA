@@ -1,4 +1,5 @@
-package voyagers.dto;
+package qaVoyagers.dto;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,6 @@ import lombok.ToString;
 @Setter
 @ToString
 @Builder
-public class TokenDto {
-    private String token;
+public class GenderDto {
+    private int gender;
 }

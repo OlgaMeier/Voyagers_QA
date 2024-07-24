@@ -1,5 +1,5 @@
-package voyagers.dto;
-import lombok.Builder;
+package qaVoyagers.dto;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +10,10 @@ import lombok.ToString;
 @ToString
 @Builder
 
-//the same as RegistrationDto
-public class AuthentificationBodyDto {
+public class LoginBodyDto {
+
     private String email;
     private String password;
 }
+
+

@@ -1,7 +1,16 @@
-package voyagers.dto;
+package qaVoyagers.dto;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
+
+@Getter
+@Setter
+@ToString
+@Builder
 
 public class EventDto {
     private Long id;
@@ -10,8 +19,6 @@ public class EventDto {
     private LocalDateTime startDateTime;
     private String addressEnd;
     private LocalDateTime endDateTime;
+    private Integer maxNnumberOfParticipants;
 
-    public Collection<Object> getEvents() {
-        return null;
-    }
 }

@@ -1,17 +1,18 @@
-package restAssuredTests;
+package restAssured;
 
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
-import voyagers.dto.AuthentificationBodyDto;
-import voyagers.dto.TokenDto;
+import qaVoyagers.dto.LoginBodyDto;
+import qaVoyagers.dto.TokenDto;
 
 import static io.restassured.RestAssured.given;
 
 public class RestAssuredTests {
-    AuthentificationBodyDto authenticationBodyDto = AuthentificationBodyDto.builder()
-            .email("Test @example.com")
-            .password("Test1234!").
-            build();
+
+    LoginBodyDto loginBodyDto = LoginBodyDto.builder()
+            .email("ben9@example.com")
+            .password("111")
+            . build();
 
 
     @Test
@@ -28,7 +29,7 @@ public class RestAssuredTests {
 
         TokenDto tokenDto = given()//Начало запроса
                 .contentType(ContentType.JSON)//Указываем тип контента
-                .body(authenticationBodyDto)// Тело запроса (POST & PUT)
+                .body(loginBodyDto)// Тело запроса (POST & PUT)
                 .when()// с каким методом и на какой эндпойнт отправляем запрос.
                 .log().all()// логирование в консоль
                 .post(url)// на какой адрес (или endpoint) отправляем запрос
@@ -37,7 +38,12 @@ public class RestAssuredTests {
                 .assertThat().statusCode(200)//Проверяем статус код пришедшего ответа
                 .extract().response().as(TokenDto.class);//извлекаем ответ.
 
-        System.out.println();
-        System.out.println(tokenDto.getToken());
+        System.out.println("---------------------------");
+        System.out.println("");
+        System.out.println(tokenDto.getAccessToken());
+        System.out.println("");
+        System.out.println("---------------------------");
     }
 }
+
+

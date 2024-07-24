@@ -1,4 +1,4 @@
-package voyagers.dto;
+package qaVoyagers.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
