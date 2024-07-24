@@ -22,11 +22,20 @@ public class HttpUtils {
     public static Properties properties = TestProperties.getINSTANCE().getProperties();
     public static final String LOGIN_ENDPOINT = properties.getProperty("login.endpoint");
     public static final String REGISTRATION_ENDPOINT = properties.getProperty("registration.endpoint");
+    public static final String GET_ACTIVE_EVENTS_ENDPOINT = properties.getProperty("getActiveEvents.endpoint");
+    public static final String GET_ALL_EVENTS_ENDPOINT = properties.getProperty("getAllEvents.endpoint");
+    public static final String GET_INFO_ABOUT_EVENT_ENDPOINT = properties.getProperty("getInfoAboutEvent.endpoint");
+    public static final String GET_ARCHIVE_EVENTS_ENDPOINT = properties.getProperty("getArchiveEvents.endpoint");
+    public static final String GET_EVENT_COMMENTS_ENDPOINT = properties.getProperty("getEventComments.endpoint");
+    public static final String APPLY_TO_EVENT_ENDPOINT = properties.getProperty("applyToEvent.endpoint");
+   // public static final String GET_APPLICANTS_ENDPOINT = properties.getProperty("getApplicants.endpoint"); пока нет такого запроса в userstory
+    public static final String DELETE_MY_APPLICATION_TO_EVENT_ENDPOINT = properties.getProperty("deleteMyApplicationToEvent.endpoint");
+    public static final String GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT = properties.getProperty("getMyEventsWithMyParticipants.endpoint");
     public static final String CREATE_EVENT_ENDPOINT = properties.getProperty("createEvent.endpoint");
+    public static final String DELETE_MY_EVENT_ENDPOINT = properties.getProperty("deleteMyEvent.endpoint");
     public static final String UPDATE_EVENT_ENDPOINT = properties.getProperty("updateEvent.endpoint");
-    public static final String DELETE_EVENT_ENDPOINT = properties.getProperty("deleteEvent.endpoint");
     public static final String ADD_EVENT_COMMENTS_ENDPOINT = properties.getProperty("addEventComments.endpoin");
-
+    public static final String LIST_OF_MY_EVENTS= properties.getProperty("listOfMyEvents.endpoint");
 
     public static <T> T postResponse(Object body, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(POST, endpoint, null, statusCode, body).as(responseClass);

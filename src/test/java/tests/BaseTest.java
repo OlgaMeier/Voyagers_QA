@@ -13,6 +13,7 @@ import java.util.Properties;
 
 public class BaseTest {
     public static Properties properties = TestProperties.getINSTANCE().getProperties();
+    private static String authToken;
 
     @BeforeAll
     public static void load() {
@@ -23,6 +24,8 @@ public class BaseTest {
         //v1
         RestAssured.basePath = properties.getProperty("base.version");
         //https://contactapp-telran-backend.herokuapp.com/v1  - дальше это эндпоинты для работы /user/login/usernamepassword";
+
+
     }
 
     static LoginBodyDto getTestUserLoginBody() {
