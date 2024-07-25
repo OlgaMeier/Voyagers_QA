@@ -45,6 +45,11 @@ public class HttpUtils {
         return getResponse(POST, endpoint, token, statusCode, body).as(responseClass);
     }
 
+    public static <T> T putResponseWithToken(Object body, String endpoint, int statusCode, String token, Class<T> responseClass) {
+        return getResponse(PUT, endpoint, token, statusCode, body).as(responseClass);
+    }
+
+
     public static <T> T putResponse(Object body, String endpoint, int statusCode, String token, Class<T> responseClass) {
         return getResponse(PUT, endpoint, token, statusCode, body).as(responseClass);
     }

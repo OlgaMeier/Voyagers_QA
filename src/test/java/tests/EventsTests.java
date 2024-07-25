@@ -26,6 +26,7 @@ import static qaVoyagers.utils.HttpUtils.getResponse;
 import static qaVoyagers.utils.HttpUtils.postResponse;
 import static qaVoyagers.utils.HttpUtils.postResponseWithToken;
 import static qaVoyagers.utils.HttpUtils.putResponse;
+import static qaVoyagers.utils.HttpUtils.putResponseWithToken;
 
 public class EventsTests extends BaseTest{
 
@@ -133,7 +134,7 @@ public class EventsTests extends BaseTest{
     String eventId = "19";
 
     // Поиск существующего с
-    EventDto existingEvent = getResponse(token, LIST_OF_MY_EVENTS.replace("{eventId}", eventId), 200, EventDto.class);
+    EventDto existingEvent = getResponse(token, UPDATE_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, EventDto.class);
     Assertions.assertEquals( 19, existingEvent.getId(), "Event ID does not match");
     //Assertions.assertNotNull(existingEvent, "Event not found");
     Assertions.assertEquals("Travel to the Moon", existingEvent.getTitle(), "Event has other title");
@@ -142,12 +143,10 @@ public class EventsTests extends BaseTest{
 
 
     // Отправка запроса на обновленеи Event
-    EventDto updatedEvent = postResponseWithToken(existingEvent, CREATE_EVENT_ENDPOINT, 200, token,EventDto.class);
+    EventDto updatedEvent = putResponseWithToken(existingEvent, UPDATE_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token,EventDto.class);
 
 
 
-    // Отправка запроса на обновление event
-    //EventDto updatedEvent= putResponse(existingEvent,UPDATE_EVENT_ENDPOINT.replace("{{eventId}}", eventId), 200, token, EventDto.class);
    // Проверка успешного обновления event
 
     Assertions.assertNotNull(updatedEvent, "Event update failed");
