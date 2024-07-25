@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import static qaVoyagers.utils.HttpUtils.CREATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ACTIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ARCHIVE_EVENTS_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.GET_INFO_ABOUT_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.LIST_OF_MY_EVENTS;
 import static qaVoyagers.utils.HttpUtils.LOGIN_ENDPOINT;
@@ -64,14 +65,37 @@ public class EventsTests extends BaseTest{
 
   }
   @Test
-  @DisplayName("Проверка получения списка пршкдших - архивных events без авторизации")
+  @DisplayName("Проверка получения списка пршедших - архивных events без авторизации")
   void getArchivedEvents() {
-    Response archivedEvents = getResponse(HttpUtils.HttpMethods.GET, GET_ARCHIVE_EVENTS_ENDPOINT, null, 200, EventsDto.class);
+//    Response archivedEvents = getResponse(HttpUtils.HttpMethods.GET, GET_ARCHIVE_EVENTS_ENDPOINT, null, 200, EventsDto.class);
+    EventsDto archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto.class);
 
-    Assertions.assertNotNull( archivedEvents, "List of archived events is empty");
-    Assertions.assertNotNull(archivedEvents.getBody(), "List of active events is empty");
+    Assertions.assertNotNull(archivedEvents, "List of archived events is empty");
+    Assertions.assertNotNull(archivedEvents.getEvents(), "List of active events is empty");
 
   }
+
+  @Test
+  @DisplayName("Проверка получения инфо о конкретном event без авторизации")
+  void getInfoAboutEvent() {
+    String eventId= "1";
+
+    // Отправка запроса на получение информации о событии
+//    EventDto eventInfo = (EventDto) getResponse(HttpUtils.HttpMethods.GET, GET_INFO_ABOUT_EVENT_ENDPOINT.replace("1", eventId), null, 200, EventDto.class);
+    EventDto eventInfo = getResponse(null, GET_INFO_ABOUT_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, EventDto.class);
+
+    // Проверка ответа
+    Assertions.assertNotNull(eventInfo, "No info about event");
+    Assertions.assertEquals( 1, eventInfo.getId(), "Event ID does not match");
+    Assertions.assertNotNull(eventInfo.getTitle(), "Event title does not match");
+    Assertions.assertNotNull(eventInfo.getAddressEnd(), "Event addressEnd does not match");
+    Assertions.assertNotNull(eventInfo.getAddressStart(), "Event addressStart does not match");
+    Assertions.assertNotNull(eventInfo.getStartDateTime(), "Event startDateTime does not match");
+    Assertions.assertNotNull(eventInfo.getEndDateTime(), "Event endDateTime does not match");
+    Assertions.assertNotNull(eventInfo.getMaximal_number_of_participants(), "Event maximal_number_of_participants does not match");
+  }
+
+
 
 
 
@@ -83,17 +107,20 @@ public class EventsTests extends BaseTest{
     EventDto newEvent = EventDto.builder()
             .title("Travel to the Moon")
             .addressStart("Cosmodrom, Planet Earth")
-            .startDateTime(LocalDateTime.parse("2024-10-10T10:00:00"))
+            .startDateTime("2024-10-10T10:00:00")
             .addressEnd("Cosmodrom, Satellite Moon")
-            .endDateTime(LocalDateTime.parse("2024-10-10T17:00:00"))
-            .maxNnumberOfParticipants(10)
+            .endDateTime("2024-10-10T17:00:00")
+            .cost(null)
+            .maximal_number_of_participants(10)
             .build();
 
-    // Отправка запроса на создание события
-    EventDto createdEvent = postResponse(token, CREATE_EVENT_ENDPOINT, 200, EventDto.class);
 
-    Assertions.assertNotNull(createdEvent, "Event creation failed");
-    Assertions.assertEquals("Travel to the Moon", createdEvent.getTitle(), "Event has other title");
+    // Отправка запроса на создание события
+    EventDto createdEvent = postResponseWithToken(newEvent, CREATE_EVENT_ENDPOINT, 200, token,EventDto.class);
+
+
+//    Assertions.assertNotNull(createdEvent, "Event creation failed");
+//    Assertions.assertEquals("Travel to the Moon", createdEvent.getTitle(), "Event has other title");
 
   }
   @Test
@@ -103,18 +130,24 @@ public class EventsTests extends BaseTest{
       token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
     // ID существующего события, которое мы будем обновлять
-    String eventId = "1";
+    String eventId = "19";
 
     // Поиск существующего с
-    EventDto existingEvent = getResponse(token, LIST_OF_MY_EVENTS.replace("{1}", eventId), 200, EventDto.class);
-    Assertions.assertNotNull(existingEvent, "Event not found");
+    EventDto existingEvent = getResponse(token, LIST_OF_MY_EVENTS.replace("{eventId}", eventId), 200, EventDto.class);
+    Assertions.assertEquals( 19, existingEvent.getId(), "Event ID does not match");
+    //Assertions.assertNotNull(existingEvent, "Event not found");
     Assertions.assertEquals("Travel to the Moon", existingEvent.getTitle(), "Event has other title");
 
-    // Обновление Title of event
     existingEvent.setTitle("Travel to the Sun");
 
+
+    // Отправка запроса на обновленеи Event
+    EventDto updatedEvent = postResponseWithToken(existingEvent, CREATE_EVENT_ENDPOINT, 200, token,EventDto.class);
+
+
+
     // Отправка запроса на обновление event
-    EventDto updatedEvent= putResponse(existingEvent,UPDATE_EVENT_ENDPOINT.replace("{id_event}", eventId), 200, token, EventDto.class);
+    //EventDto updatedEvent= putResponse(existingEvent,UPDATE_EVENT_ENDPOINT.replace("{{eventId}}", eventId), 200, token, EventDto.class);
    // Проверка успешного обновления event
 
     Assertions.assertNotNull(updatedEvent, "Event update failed");

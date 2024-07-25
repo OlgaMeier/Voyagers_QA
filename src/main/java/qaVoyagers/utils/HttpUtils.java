@@ -28,14 +28,14 @@ public class HttpUtils {
     public static final String GET_ARCHIVE_EVENTS_ENDPOINT = properties.getProperty("getArchiveEvents.endpoint");
     public static final String GET_EVENT_COMMENTS_ENDPOINT = properties.getProperty("getEventComments.endpoint");
     public static final String APPLY_TO_EVENT_ENDPOINT = properties.getProperty("applyToEvent.endpoint");
-   // public static final String GET_APPLICANTS_ENDPOINT = properties.getProperty("getApplicants.endpoint"); пока нет такого запроса в userstory
+    // public static final String GET_APPLICANTS_ENDPOINT = properties.getProperty("getApplicants.endpoint"); пока нет такого запроса в userstory
     public static final String DELETE_MY_APPLICATION_TO_EVENT_ENDPOINT = properties.getProperty("deleteMyApplicationToEvent.endpoint");
     public static final String GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT = properties.getProperty("getMyEventsWithMyParticipants.endpoint");
     public static final String CREATE_EVENT_ENDPOINT = properties.getProperty("createEvent.endpoint");
     public static final String DELETE_MY_EVENT_ENDPOINT = properties.getProperty("deleteMyEvent.endpoint");
     public static final String UPDATE_EVENT_ENDPOINT = properties.getProperty("updateEvent.endpoint");
     public static final String ADD_EVENT_COMMENTS_ENDPOINT = properties.getProperty("addEventComments.endpoin");
-    public static final String LIST_OF_MY_EVENTS= properties.getProperty("listOfMyEvents.endpoint");
+    public static final String LIST_OF_MY_EVENTS = properties.getProperty("listOfMyEvents.endpoint");
 
     public static <T> T postResponse(Object body, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(POST, endpoint, null, statusCode, body).as(responseClass);
@@ -51,10 +51,6 @@ public class HttpUtils {
 
     public static <T> T getResponse(String token, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(GET, endpoint, token, statusCode, null).as(responseClass);
-    }
-
-    public static <T> T getResponse(String token, String endpoint, String eventIdAndEndpoint, int statusCode, Class<T> responseClass) {
-        return getResponse(GET, endpoint + "/" + eventIdAndEndpoint, token, statusCode, null).as(responseClass);
     }
 
     public static <T> T deleteResponse(String token, String endpoint, int statusCode, Class<T> responseClass) {
@@ -108,7 +104,7 @@ public class HttpUtils {
         headers.put("Content-Type", "application/json");
         headers.put("Accept", "application/json");
         if (!isNullOrEmpty(token)) {
-            headers.put("Authorization", token);
+            headers.put("Authorization", "Bearer " + token);
         }
         requestSpecBuilder.addHeaders(headers);
         return requestSpecBuilder;

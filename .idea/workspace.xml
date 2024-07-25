@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Сщььше 24.07.2024">
-      <change afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/CommentsToEventDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/ErrorMessageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/ErrorMessageDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/EventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/EventDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/GenderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/GenderDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/RegistrationAndLoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/RegistrationAndLoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +58,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "OlgaMeier"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;OlgaMeier&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/OlgaMeier/Voyagers_QA.git",
-    "accountId": "4fec4307-649a-496d-827a-44671a620023"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/OlgaMeier/Voyagers_QA.git&quot;,
+    &quot;accountId&quot;: &quot;4fec4307-649a-496d-827a-44671a620023&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2jYtQKs8hwNbIkY9mKHzP8L8rqK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -79,6 +82,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.EventsTests.executor": "Run",
+    "JUnit.EventsTests.getInfoAboutEvent.executor": "Run",
+    "JUnit.EventsTests.testCreateEvent.executor": "Run",
+    "JUnit.EventsTests.testUpdateEvent.executor": "Run",
     "JUnit.LoginTestHttp.executor": "Run",
     "JUnit.RegistrationAndLoginTests.executor": "Run",
     "JUnit.RegistrationAndLoginTests.test1.executor": "Run",
@@ -114,8 +120,8 @@
       <recent name="C:\Users\Olga Meier\OneDrive\Desktop\VOYAGERS_QA_PROJECT_TEAM9\src\main\java\qaVoyagers\dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventsTests">
-    <configuration name="EventsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EventsTests.testUpdateEvent">
+    <configuration name="EventsTests.testUpdateEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -125,12 +131,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testUpdateEvent" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationAndLoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationAndLoginTests.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -140,7 +147,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -195,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EventsTests" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests.test4" />
+        <item itemvalue="JUnit.EventsTests.testUpdateEvent" />
         <item itemvalue="JUnit.RegistrationAndLoginTests.test5" />
+        <item itemvalue="JUnit.RegistrationAndLoginTests.test4" />
         <item itemvalue="JUnit.RegistrationAndLoginTests.test3" />
+        <item itemvalue="JUnit.RegistrationAndLoginTests.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -228,11 +236,31 @@
       <option name="project" value="LOCAL" />
       <updated>1721814760587</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Сщььше 24.07.2024">
+      <option name="closed" value="true" />
+      <created>1721836606912</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721836606912</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Events Tests 24.07.2024" />
     <MESSAGE value="Сщььше 24.07.2024" />
     <option name="LAST_COMMIT_MESSAGE" value="Сщььше 24.07.2024" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/tests/EventsTests.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
