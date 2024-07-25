@@ -13,6 +13,7 @@ import java.util.Properties;
 
 public class BaseTest {
     public static Properties properties = TestProperties.getINSTANCE().getProperties();
+    private static String authToken;
 
     @BeforeAll
     public static void load() {
@@ -23,6 +24,8 @@ public class BaseTest {
         //v1
         RestAssured.basePath = properties.getProperty("base.version");
         //https://contactapp-telran-backend.herokuapp.com/v1  - дальше это эндпоинты для работы /user/login/usernamepassword";
+
+
     }
 
     static LoginBodyDto getTestUserLoginBody() {
@@ -45,7 +48,7 @@ public class BaseTest {
                 .phone(properties.getProperty("testuser.phone"))
                 .photo(properties.getProperty("testuser.photo"))
                 .gender(GenderDto.builder()
-                        .gender(Integer.parseInt(properties.getProperty("testuser.gender")))
+                        .id(Integer.parseInt(properties.getProperty("testuser.gender")))
                         .build())
                 .build();
     }
@@ -61,10 +64,10 @@ public class BaseTest {
         return EventDto.builder()
                 .title(properties.getProperty("event.title"))
                 .addressStart(properties.getProperty("event.addressStart"))
-                .startDateTime(LocalDateTime.parse(properties.getProperty("event.startDateTime")))
+                .startDateTime(properties.getProperty("event.startDateTime"))
                 .addressEnd(properties.getProperty("event.addressEnd"))
-                .endDateTime(LocalDateTime.parse(properties.getProperty("event.endDateTime")))
-                .maxNnumberOfParticipants(Integer.valueOf(properties.getProperty("event.maxNnumberOfParticipants")))
+                .endDateTime(properties.getProperty("event.endDateTime"))
+                .maximal_number_of_participants(Integer.valueOf(properties.getProperty("event.maxNnumberOfParticipants")))
                 .build();
     }
 }

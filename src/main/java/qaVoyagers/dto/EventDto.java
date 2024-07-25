@@ -5,20 +5,19 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @ToString
 @Builder
 
 public class EventDto {
-    private Long id;
+    private int id;
     private String title;
     private String addressStart;
-    private LocalDateTime startDateTime;
+    private String startDateTime;
     private String addressEnd;
-    private LocalDateTime endDateTime;
-    private Integer maxNnumberOfParticipants;
+    private String endDateTime;
+    private String cost;
+    private int maximal_number_of_participants;
 
 }

@@ -10,5 +10,5 @@ import lombok.ToString;
 @ToString
 @Builder
 public class GenderDto {
-    private int gender;
+    private int id;
 }
