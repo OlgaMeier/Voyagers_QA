@@ -4,22 +4,25 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import qaVoyagers.dto.ApplyEventRqDto;
 import qaVoyagers.dto.CommentsEventRqDto;
 import qaVoyagers.dto.CommentsEventRsDto;
+import qaVoyagers.dto.ErrorMessageDto;
 import qaVoyagers.dto.EventDto;
 import qaVoyagers.dto.EventsDto;
+import qaVoyagers.dto.ResponseMessageDto;
 import qaVoyagers.dto.TokenDto;
 import qaVoyagers.utils.HttpUtils;
 
-import java.time.LocalDateTime;
-
 import static qaVoyagers.utils.HttpUtils.ADD_EVENT_COMMENTS_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.APPLY_TO_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.CREATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ACTIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ARCHIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_EVENT_COMMENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_INFO_ABOUT_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.LOGIN_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.REGISTRATION_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.UPDATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.getResponse;
 import static qaVoyagers.utils.HttpUtils.postResponse;
@@ -87,24 +90,12 @@ public class EventsTests extends BaseTest {
         Assertions.assertNotNull(commentsToEvent, "No comments to  event");
         Assertions.assertNotNull(commentsToEvent.length > 0, "No comments to event");
 
-     //   if (commentsToEvent.length > 0) {
-          //  CommentsEventRsDto firstComment = commentsToEvent[0];
 
-            //  Assertions.assertNotNull(firstComment.getCommentId(), "Comment ID is null");
-//            Assertions.assertNotNull(firstComment. (), "Comment`s text is null");
-//            Assertions.assertNotNull(firstComment.getAuthor(), "Author of comments has other name");
-//            Assertions.assertNotNull(firstComment.getTimestamp(), "Timestamp to comment of event doesn`t match");
-
-           /* "firstName": "Ben",
-                    "lastName": "Benovski",
-                    "comments": "I was happy to partisipate to this voyage",
-                    "eventTitle": "Meeting Conference"*/
-      //  }
     }
 
 
     @Test
-    @DisplayName("Проверка создания event у авторизованного пользователя")
+    @DisplayName("Проверка создания event у авторизованного пользователя-TESTUSER")
     void testCreateEvent() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         // Создание объекта события
@@ -129,7 +120,7 @@ public class EventsTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка обновления данных в event у авторизованного пользователя")
+    @DisplayName("Проверка обновления данных в event у авторизованного пользователя - TESTUSER")
     void testUpdateEvent() {
         // Авторизация и получение токена
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
@@ -157,7 +148,7 @@ public class EventsTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка добавления комментария к архивному event  авторизованным пользователем")
+    @DisplayName("Проверка добавления комментария к архивному event  авторизованным пользователем- TESTUSER")
     void testCommentsToEvent() {
         // Авторизация и получение токена
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
@@ -179,8 +170,56 @@ public class EventsTests extends BaseTest {
       Assertions.assertEquals("The info about event is very interesting", addedComment.getComments(), "Comment text does not match");
 
     }
+    // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (Позитивный ТЕСТ)
+
+    @Test
+    @DisplayName("Проверка прдачи заявки на участие в активном event  авторизованным пользователем-AliceFromWonderland")
+    void testFirstApplicationToEvent() {
+        // Авторизация и получение токена
+        token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+
+        // ID существующего события, которое мы будем обновлять
+        String eventId = "11";
+
+        //Создание заявки на участие в event
+
+        ApplyEventRqDto applicationToEventBody = ApplyEventRqDto.builder()
+                .application("I wish to travel  to the Sun")
+                .build();
 
 
+        postResponseWithToken(applicationToEventBody, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token);
+
+        // Отправка запроса на подачу заявки с токеном
+
+        Assertions.assertEquals(200, "200");
+
+    }
+
+
+    // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
+    @Test
+    @DisplayName("Проверка повторной подачи заявки на участие в активном event  авторизованным пользователем")
+    void testSecondApplicationToEvent() {
+        // Авторизация и получение токена
+        token = postResponse((getTestUserLoginBody()), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+
+        // ID существующего события, которое мы будем обновлять
+        String eventId = "13";
+
+        //Создание заявки на участие в event
+
+        ApplyEventRqDto applicationToEvent = ApplyEventRqDto.builder()
+                .application("I wish to partisipate to the event")
+                .build();
+
+        //ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ApplyEventRqDto.class);
+
+
+        ErrorMessageDto errorMessageDto = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ErrorMessageDto.class);
+
+        Assertions.assertEquals("You are already registered for this event.", errorMessageDto.getMessage(), "Текст ошибки не соответствует ожидаемому");
+    }
 
 /*
   @Test

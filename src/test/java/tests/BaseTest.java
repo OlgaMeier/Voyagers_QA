@@ -8,7 +8,6 @@ import qaVoyagers.dto.LoginBodyDto;
 import qaVoyagers.dto.RegistrationUserDto;
 import qaVoyagers.utils.TestProperties;
 
-import java.time.LocalDateTime;
 import java.util.Properties;
 
 public class BaseTest {
@@ -35,8 +34,16 @@ public class BaseTest {
                 .build();
     }
 
+    static LoginBodyDto getAliceUserLoginBody() {
+        return LoginBodyDto.builder()
+                .email(properties.getProperty("aliceUser.email"))
+                .password(properties.getProperty("aliceUser.password"))
+                .build();
+    }
 
-    static RegistrationUserDto getRegistrationUserBody() {
+
+
+    static RegistrationUserDto getRegistrationUserBodyTestUser() {
 
         return RegistrationUserDto.builder()
                 .firstName(properties.getProperty(" testuser.firstname"))
@@ -52,6 +59,25 @@ public class BaseTest {
                         .build())
                 .build();
     }
+
+    static RegistrationUserDto getRegistrationUserBodyAliceUser() {
+
+        return RegistrationUserDto.builder()
+                .firstName(properties.getProperty("aliceUser.firstname"))
+                .lastName(properties.getProperty("aliceUser.lastname"))
+                .dateOfBirth(properties.getProperty("aliceUser.dateOfBirth"))
+
+                .email(properties.getProperty("aliceUser.email"))
+                .password(properties.getProperty("aliceUser.password"))
+                .phone(properties.getProperty("aliceUser.phone"))
+                .photo(properties.getProperty("aliceUser.photo"))
+                .gender(GenderDto.builder()
+                        .id(Integer.parseInt(properties.getProperty("aliceUser.gender")))
+                        .build())
+                .build();
+    }
+
+
     /*как удалить евент афторизованному юзеру
    static LoginBodyDto getDeleteTestUserLoginBody() {
         return LoginBodyDto.builder()
