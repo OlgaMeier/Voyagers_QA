@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit  25.07.2024">
+    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit more succcessfull tests 25.07.2024">
+      <change afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/CommentsEventRsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/CommentsToEventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/CommentsEventRqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/EventsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/EventsDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
     </list>
@@ -58,22 +62,25 @@
     &quot;assignee&quot;: &quot;OlgaMeier&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/OlgaMeier/Voyagers_QA.git",
-    "accountId": "4fec4307-649a-496d-827a-44671a620023"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/OlgaMeier/Voyagers_QA.git&quot;,
+    &quot;accountId&quot;: &quot;4fec4307-649a-496d-827a-44671a620023&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "OlgaMeier",
-    "repository": "Voyagers_QA"
+    &quot;owner&quot;: &quot;OlgaMeier&quot;,
+    &quot;repository&quot;: &quot;Voyagers_QA&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -86,7 +93,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.EventsTests.executor": "Run",
+    "JUnit.EventsTests.getCommentsAboutEvent.executor": "Run",
     "JUnit.EventsTests.getInfoAboutEvent.executor": "Run",
+    "JUnit.EventsTests.test1.executor": "Run",
+    "JUnit.EventsTests.testCommentsToEvent.executor": "Run",
     "JUnit.EventsTests.testCreateEvent.executor": "Run",
     "JUnit.EventsTests.testUpdateEvent.executor": "Run",
     "JUnit.LoginTestHttp.executor": "Run",
@@ -102,14 +112,14 @@
     "JUnit.RestAssuredTests.test1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.google.cloudcode.ide_session_index": "20240722_0000",
-    "git-widget-placeholder": "#2 on qa__Voyagers",
+    "com.google.cloudcode.ide_session_index": "20240725_0000",
+    "git-widget-placeholder": "qa__Voyagers",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Olga Meier/OneDrive/Desktop/VOYAGERS_QA_PROJECT_TEAM9/src/test",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -123,8 +133,59 @@
       <recent name="C:\Users\Olga Meier\OneDrive\Desktop\VOYAGERS_QA_PROJECT_TEAM9\src\main\java\qaVoyagers" />
       <recent name="C:\Users\Olga Meier\OneDrive\Desktop\VOYAGERS_QA_PROJECT_TEAM9\src\main\java\qaVoyagers\dto" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="qaVoyagers.dto" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventsTests.testUpdateEvent">
+  <component name="RunManager" selected="JUnit.EventsTests.getCommentsAboutEvent">
+    <configuration name="EventsTests.getCommentsAboutEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
+      <option name="METHOD_NAME" value="getCommentsAboutEvent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventsTests.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventsTests.testCommentsToEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
+      <option name="METHOD_NAME" value="testCommentsToEvent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EventsTests.testUpdateEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
@@ -136,54 +197,6 @@
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
       <option name="METHOD_NAME" value="testUpdateEvent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationAndLoginTests.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
-      <option name="METHOD_NAME" value="test2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationAndLoginTests.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
-      <option name="METHOD_NAME" value="test3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationAndLoginTests.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
-      <option name="METHOD_NAME" value="test4" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -207,11 +220,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventsTests.getCommentsAboutEvent" />
+        <item itemvalue="JUnit.EventsTests.testCommentsToEvent" />
+        <item itemvalue="JUnit.EventsTests.test1" />
         <item itemvalue="JUnit.EventsTests.testUpdateEvent" />
         <item itemvalue="JUnit.RegistrationAndLoginTests.test5" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests.test4" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests.test3" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -256,24 +269,22 @@
       <option name="project" value="LOCAL" />
       <updated>1721909894504</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Commit more succcessfull tests 25.07.2024">
+      <option name="closed" value="true" />
+      <created>1721914539626</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721914539626</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Events Tests 24.07.2024" />
     <MESSAGE value="Сщььше 24.07.2024" />
     <MESSAGE value="Commit  25.07.2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit  25.07.2024" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/tests/EventsTests.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Commit more succcessfull tests 25.07.2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit more succcessfull tests 25.07.2024" />
   </component>
 </project>

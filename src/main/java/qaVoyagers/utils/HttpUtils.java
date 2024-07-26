@@ -23,7 +23,7 @@ public class HttpUtils {
     public static final String LOGIN_ENDPOINT = properties.getProperty("login.endpoint");
     public static final String REGISTRATION_ENDPOINT = properties.getProperty("registration.endpoint");
     public static final String GET_ACTIVE_EVENTS_ENDPOINT = properties.getProperty("getActiveEvents.endpoint");
-    public static final String GET_ALL_EVENTS_ENDPOINT = properties.getProperty("getAllEvents.endpoint");
+   // public static final String GET_ALL_EVENTS_ENDPOINT = properties.getProperty("getAllEvents.endpoint"); //пока нет такой потребности и запроса в userstory
     public static final String GET_INFO_ABOUT_EVENT_ENDPOINT = properties.getProperty("getInfoAboutEvent.endpoint");
     public static final String GET_ARCHIVE_EVENTS_ENDPOINT = properties.getProperty("getArchiveEvents.endpoint");
     public static final String GET_EVENT_COMMENTS_ENDPOINT = properties.getProperty("getEventComments.endpoint");
@@ -56,6 +56,10 @@ public class HttpUtils {
 
     public static <T> T getResponse(String token, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(GET, endpoint, token, statusCode, null).as(responseClass);
+    }
+
+    public static <T> T getResponseWithToken(Object body, String endpoint, int statusCode, String token, Class<T> responseClass) {
+        return getResponse(GET, endpoint, token, statusCode, body).as(responseClass);
     }
 
     public static <T> T deleteResponse(String token, String endpoint, int statusCode, Class<T> responseClass) {
