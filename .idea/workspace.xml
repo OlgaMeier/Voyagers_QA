@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit more  succcessfull tests to event 26.07.2024">
-      <change afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/ResponseWithoutMessageDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/EventsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/EventsDto.java" afterDir="false" />
+    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit tests to event 27.07.2024">
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +89,7 @@
     "JUnit.EventsTests.executor": "Run",
     "JUnit.EventsTests.getCommentsAboutEvent.executor": "Run",
     "JUnit.EventsTests.getInfoAboutEvent.executor": "Run",
+    "JUnit.EventsTests.getMyEvents_TestUser.executor": "Run",
     "JUnit.EventsTests.getMyvents_TestUser.executor": "Run",
     "JUnit.EventsTests.test1.executor": "Run",
     "JUnit.EventsTests.testApplicationToEvent.executor": "Run",
@@ -140,7 +138,23 @@
       <recent name="qaVoyagers.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventsTests.getMyvents_TestUser">
+  <component name="RunManager" selected="JUnit.EventsTests.getMyEvents_TestUser">
+    <configuration name="EventsTests.getMyEvents_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
+      <option name="METHOD_NAME" value="getMyEvents_TestUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EventsTests.getMyvents_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
@@ -205,29 +219,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationAndLoginTests.testCreateDragonUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
-      <option name="METHOD_NAME" value="testCreateDragonUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventsTests.getMyEvents_TestUser" />
         <item itemvalue="JUnit.EventsTests.getMyvents_TestUser" />
         <item itemvalue="JUnit.EventsTests.testFirstApplicationToEvent" />
         <item itemvalue="JUnit.RegistrationAndLoginTests.testCreateAliceFromWonderland3" />
         <item itemvalue="JUnit.EventsTests.testSecondApplicationToEvent" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests.testCreateDragonUser" />
       </list>
     </recent_temporary>
   </component>
@@ -296,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722032519366</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Commit tests to event 27.07.2024">
+      <option name="closed" value="true" />
+      <created>1722072047682</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722072047682</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -306,6 +312,7 @@
     <MESSAGE value="Commit more succcessfull tests 25.07.2024" />
     <MESSAGE value="Commit more succcessfull tests 26.07.2024" />
     <MESSAGE value="Commit more  succcessfull tests to event 26.07.2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit more  succcessfull tests to event 26.07.2024" />
+    <MESSAGE value="Commit tests to event 27.07.2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit tests to event 27.07.2024" />
   </component>
 </project>

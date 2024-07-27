@@ -23,6 +23,7 @@ import static qaVoyagers.utils.HttpUtils.GET_ARCHIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_EVENT_COMMENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_INFO_ABOUT_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.LIST_OF_MY_EVENTS;
 import static qaVoyagers.utils.HttpUtils.LOGIN_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.REGISTRATION_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.UPDATE_EVENT_ENDPOINT;
@@ -48,12 +49,24 @@ public class EventsTests extends BaseTest {
 
     }
     @Test
-    @DisplayName("Проверка получения списка  events у авторизованного пользователя TESTUSER")
-    void getMyvents_TestUser() {
+    @DisplayName("Проверка получения списка  events, с участием авторизованного пользователя TESTUSER")
+    void getMyApplicatedEvents_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // Получение списка активных событий с токеном
         EventDto[] activeEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT, 200, token, EventDto[].class);
+
+        Assertions.assertNotNull(activeEvents, "List of active events is empty");
+        Assertions.assertTrue(activeEvents.length > 0, "List of active events is empty");
+    }
+
+    @Test
+    @DisplayName("Проверка получения списка  events, созданных авторизованным пользователем TESTUSER")
+    void getMyEvents_TestUser() {
+        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+
+        // Получение списка активных событий с токеном
+        EventDto[] activeEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, LIST_OF_MY_EVENTS, 200, token, EventDto[].class);
 
         Assertions.assertNotNull(activeEvents, "List of active events is empty");
         Assertions.assertTrue(activeEvents.length > 0, "List of active events is empty");
