@@ -11,6 +11,7 @@ import qaVoyagers.dto.ErrorMessageDto;
 import qaVoyagers.dto.EventDto;
 import qaVoyagers.dto.EventsDto;
 import qaVoyagers.dto.ResponseMessageDto;
+import qaVoyagers.dto.ResponseWithoutMessageDto;
 import qaVoyagers.dto.TokenDto;
 import qaVoyagers.utils.HttpUtils;
 
@@ -21,10 +22,12 @@ import static qaVoyagers.utils.HttpUtils.GET_ACTIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ARCHIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_EVENT_COMMENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_INFO_ABOUT_EVENT_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.LOGIN_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.REGISTRATION_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.UPDATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.getResponse;
+import static qaVoyagers.utils.HttpUtils.getResponseWithToken;
 import static qaVoyagers.utils.HttpUtils.postResponse;
 import static qaVoyagers.utils.HttpUtils.postResponseWithToken;
 import static qaVoyagers.utils.HttpUtils.putResponseWithToken;
@@ -43,6 +46,17 @@ public class EventsTests extends BaseTest {
         Assertions.assertNotNull(activeEvents, "List of active events is empty");
         Assertions.assertNotNull(activeEvents.getBody(), "List of active events is empty");
 
+    }
+    @Test
+    @DisplayName("Проверка получения списка  events у авторизованного пользователя TESTUSER")
+    void getMyvents_TestUser() {
+        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+
+        // Получение списка активных событий с токеном
+        EventDto[] activeEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT, 200, token, EventDto[].class);
+
+        Assertions.assertNotNull(activeEvents, "List of active events is empty");
+        Assertions.assertTrue(activeEvents.length > 0, "List of active events is empty");
     }
 
     @Test
@@ -179,7 +193,7 @@ public class EventsTests extends BaseTest {
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "11";
+        String eventId = "1";
 
         //Создание заявки на участие в event
 
@@ -188,7 +202,7 @@ public class EventsTests extends BaseTest {
                 .build();
 
 
-        postResponseWithToken(applicationToEventBody, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token);
+       ResponseWithoutMessageDto submietedApplication = postResponseWithToken(applicationToEventBody, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ResponseWithoutMessageDto.class);
 
         // Отправка запроса на подачу заявки с токеном
 
