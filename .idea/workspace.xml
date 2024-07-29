@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit tests to event 27.07.2024">
+    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit2 tests to event 27.07.2024">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,9 +89,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.EventsTests.deleteEvent_TestUser.executor": "Run",
+    "JUnit.EventsTests.deleteNotExistedEvent_TestUser.executor": "Run",
+    "JUnit.EventsTests.deletetMyEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.executor": "Run",
     "JUnit.EventsTests.getCommentsAboutEvent.executor": "Run",
     "JUnit.EventsTests.getInfoAboutEvent.executor": "Run",
+    "JUnit.EventsTests.getMyApplicatedEvents_TestUser.executor": "Run",
     "JUnit.EventsTests.getMyEvents_TestUser.executor": "Run",
     "JUnit.EventsTests.getMyvents_TestUser.executor": "Run",
     "JUnit.EventsTests.test1.executor": "Run",
@@ -138,8 +145,8 @@
       <recent name="qaVoyagers.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventsTests.getMyEvents_TestUser">
-    <configuration name="EventsTests.getMyEvents_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EventsTests.testSecondApplicationToEvent">
+    <configuration name="EventsTests.deleteNotExistedEvent_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -149,13 +156,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="getMyEvents_TestUser" />
+      <option name="METHOD_NAME" value="deleteNotExistedEvent_TestUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventsTests.getMyvents_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EventsTests.deletetMyEvent_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -165,7 +172,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="getMyvents_TestUser" />
+      <option name="METHOD_NAME" value="deletetMyEvent_TestUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventsTests.testCreateEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
+      <option name="METHOD_NAME" value="testCreateEvent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -203,29 +226,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationAndLoginTests.testCreateAliceFromWonderland3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
-      <option name="METHOD_NAME" value="testCreateAliceFromWonderland3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EventsTests.getMyEvents_TestUser" />
-        <item itemvalue="JUnit.EventsTests.getMyvents_TestUser" />
-        <item itemvalue="JUnit.EventsTests.testFirstApplicationToEvent" />
-        <item itemvalue="JUnit.RegistrationAndLoginTests.testCreateAliceFromWonderland3" />
         <item itemvalue="JUnit.EventsTests.testSecondApplicationToEvent" />
+        <item itemvalue="JUnit.EventsTests.testCreateEvent" />
+        <item itemvalue="JUnit.EventsTests.testFirstApplicationToEvent" />
+        <item itemvalue="JUnit.EventsTests.deletetMyEvent_TestUser" />
+        <item itemvalue="JUnit.EventsTests.deleteNotExistedEvent_TestUser" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722072047682</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Commit2 tests to event 27.07.2024">
+      <option name="closed" value="true" />
+      <created>1722072358567</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722072358567</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -313,6 +328,22 @@
     <MESSAGE value="Commit more succcessfull tests 26.07.2024" />
     <MESSAGE value="Commit more  succcessfull tests to event 26.07.2024" />
     <MESSAGE value="Commit tests to event 27.07.2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit tests to event 27.07.2024" />
+    <MESSAGE value="Commit2 tests to event 27.07.2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit2 tests to event 27.07.2024" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/tests/EventsTests.java</url>
+          <line>277</line>
+          <properties class="tests.EventsTests" method="testSecondApplicationToEvent">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

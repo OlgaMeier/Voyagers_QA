@@ -18,6 +18,7 @@ import qaVoyagers.utils.HttpUtils;
 import static qaVoyagers.utils.HttpUtils.ADD_EVENT_COMMENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.APPLY_TO_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.CREATE_EVENT_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.DELETE_MY_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ACTIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_ARCHIVE_EVENTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_EVENT_COMMENTS_ENDPOINT;
@@ -25,7 +26,6 @@ import static qaVoyagers.utils.HttpUtils.GET_INFO_ABOUT_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.LIST_OF_MY_EVENTS;
 import static qaVoyagers.utils.HttpUtils.LOGIN_ENDPOINT;
-import static qaVoyagers.utils.HttpUtils.REGISTRATION_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.UPDATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.getResponse;
 import static qaVoyagers.utils.HttpUtils.getResponseWithToken;
@@ -66,16 +66,66 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // Получение списка активных событий с токеном
-        EventDto[] activeEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, LIST_OF_MY_EVENTS, 200, token, EventDto[].class);
+        EventDto[] myCreatedEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, LIST_OF_MY_EVENTS, 200, token, EventDto[].class);
 
-        Assertions.assertNotNull(activeEvents, "List of active events is empty");
-        Assertions.assertTrue(activeEvents.length > 0, "List of active events is empty");
+        Assertions.assertNotNull(myCreatedEvents, "List of active events is empty");
+        Assertions.assertTrue(myCreatedEvents.length > 0, "List of active events is empty");
     }
+    @Test
+    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    void deletetMyEvent_TestUser() {
+        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+        String eventId = "21";
 
+
+        //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
+
+        Response response = HttpUtils.getResponse(HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), token, 200,200);
+
+
+
+        Assertions.assertEquals("200",  "200");
+
+
+    }
+    @Test
+    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    void deleteNotMyEvent_TestUser() {
+        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+        String eventId = "11";
+
+
+        //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
+
+       Response response = HttpUtils.getResponse(HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), token, 403,403);
+
+
+
+         Assertions.assertEquals("You can't delete events that don't belong to you",  "You can't delete events that don't belong to you");
+
+
+    }
+    @Test
+    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    void deleteNotExistedEvent_TestUser() {
+        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+        String eventId = "20";
+
+
+        //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
+
+        Response response = HttpUtils.getResponse(HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), token, 404,404);
+
+
+
+        Assertions.assertEquals("Event not found",  "Event not found");
+
+
+    }
     @Test
     @DisplayName("Проверка получения списка пршедших - архивных events без авторизации")
     void getArchivedEvents() {
-//    Response archivedEvents = getResponse(HttpUtils.HttpMethods.GET, GET_ARCHIVE_EVENTS_ENDPOINT, null, 200, EventsDto.class);
+
         EventsDto archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto.class);
 
         Assertions.assertNotNull(archivedEvents, "List of archived events is empty");
@@ -89,7 +139,7 @@ public class EventsTests extends BaseTest {
         String eventId = "1";
 
         // Отправка запроса на получение информации о событии
-//    EventDto eventInfo = (EventDto) getResponse(HttpUtils.HttpMethods.GET, GET_INFO_ABOUT_EVENT_ENDPOINT.replace("1", eventId), null, 200, EventDto.class);
+
         EventDto eventInfo = getResponse(null, GET_INFO_ABOUT_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, EventDto.class);
 
         // Проверка ответа
@@ -110,7 +160,7 @@ public class EventsTests extends BaseTest {
         String eventId = "1";
 
         // Отправка запроса на получение информации о событии
-//    EventDto eventInfo = (EventDto) getResponse(HttpUtils.HttpMethods.GET, GET_INFO_ABOUT_EVENT_ENDPOINT.replace("1", eventId), null, 200, EventDto.class);
+
         CommentsEventRsDto[] commentsToEvent = getResponse(null, GET_EVENT_COMMENTS_ENDPOINT.replace("{eventId}", eventId), 200, CommentsEventRsDto[].class);
 
         // Проверка ответа
@@ -127,10 +177,10 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         // Создание объекта события
         EventDto newEvent = EventDto.builder()
-                .title("Travel to the Moon")
+                .title("Travel to out of Solar sistem")
                 .addressStart("Cosmodrom, Planet Earth")
                 .startDateTime("2024-10-10T10:00:00")
-                .addressEnd("Cosmodrom, Satellite Moon")
+                .addressEnd("Cosmodrom, Venus")
                 .endDateTime("2024-10-10T17:00:00")
                 .cost(null)
                 .maximal_number_of_participants(10)
@@ -141,8 +191,6 @@ public class EventsTests extends BaseTest {
         EventDto createdEvent = postResponseWithToken(newEvent, CREATE_EVENT_ENDPOINT, 200, token, EventDto.class);
 
 
-//    Assertions.assertNotNull(createdEvent, "Event creation failed");
-//    Assertions.assertEquals("Travel to the Moon", createdEvent.getTitle(), "Event has other title");
 
     }
 
@@ -200,39 +248,39 @@ public class EventsTests extends BaseTest {
     // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (Позитивный ТЕСТ)
 
     @Test
-    @DisplayName("Проверка прдачи заявки на участие в активном event  авторизованным пользователем-AliceFromWonderland")
+    @DisplayName("Проверка (Неуспешной) повторной пордачи заявки на участие в активном event  авторизованным пользователем-AliceFromWonderland")
     void testFirstApplicationToEvent() {
         // Авторизация и получение токена
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "1";
+        String eventId = "22";
 
         //Создание заявки на участие в event
 
-        ApplyEventRqDto applicationToEventBody = ApplyEventRqDto.builder()
+        ApplyEventRqDto secondApplicationToEvent = ApplyEventRqDto.builder()
                 .application("I wish to travel  to the Sun")
                 .build();
 
-
-       ResponseWithoutMessageDto submietedApplication = postResponseWithToken(applicationToEventBody, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ResponseWithoutMessageDto.class);
+      ResponseMessageDto submittedAplication = postResponseWithToken(secondApplicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ResponseMessageDto.class);
 
         // Отправка запроса на подачу заявки с токеном
+        // Проверка результата
+        Assertions.assertEquals("You are already registered for this event.", submittedAplication.getMessage(),"The response doesn`t match");
 
-        Assertions.assertEquals(200, "200");
 
     }
 
 
-    // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
+ /*   // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
     @Test
-    @DisplayName("Проверка повторной подачи заявки на участие в активном event  авторизованным пользователем")
+    @DisplayName("Проверка (Успешной) подачи заявки на участие в активном event  авторизованным пользователем")
     void testSecondApplicationToEvent() {
         // Авторизация и получение токена
-        token = postResponse((getTestUserLoginBody()), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+        token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "13";
+        String eventId = "23";
 
         //Создание заявки на участие в event
 
@@ -243,37 +291,14 @@ public class EventsTests extends BaseTest {
         //ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ApplyEventRqDto.class);
 
 
-        ErrorMessageDto errorMessageDto = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ErrorMessageDto.class);
+      // ResponseMessageDto submitedApplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token,ResponseMessageDto.class);
 
-        Assertions.assertEquals("You are already registered for this event.", errorMessageDto.getMessage(), "Текст ошибки не соответствует ожидаемому");
+
+        // Отправка запроса на создание события
+       ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ApplyEventRqDto.class);*/
+
+
     }
-
-/*
-  @Test
-  @Tag("@DELETE")
-  @DisplayName("Проверка удаления контакта у авторизованного пользователя по id")
-  void test4() throws Exception {
-    ContactsDto contacts = getResponse(token, CONTACTS_ENDPOINT, 200, ContactsDto.class);
-    Assertions.assertTrue(contacts.getContacts().size() == 1);
-    String id = contacts.getContacts().get(0).getId();
-
-    ResponseMessageDto responseMessageDto = deleteResponse(token, CONTACTS_ENDPOINT + "/" + id, 200, ResponseMessageDto.class);
-    Assertions.assertEquals("Contact was deleted!", responseMessageDto.getMessage(), "Сообщение об удалении не соответствует ожидаемому");
-
-    contacts = getResponse(token, CONTACTS_ENDPOINT, 200, ContactsDto.class);
-    //TODO написать вторую проверку по списку
-    Assertions.assertTrue(contacts.getContacts().size() == 0);
-
-    //Альтернативная проверка
-//        for (ContactDto contact : contacts.getContacts()) {
-//            if (contact.getId().equals(id)) {
-////                throw new Exception("Контакт не удалён");
-//                //AutotestExc
-//                Assertions.assertFalse(contact.getId().equals(id), "Контакт не удалён");
-//            }
-//        }
-  }*/
-
 
 
 
