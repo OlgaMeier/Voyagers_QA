@@ -12,10 +12,12 @@ import qaVoyagers.dto.EventDto;
 import qaVoyagers.dto.EventsDto;
 import qaVoyagers.dto.ResponseMessageDto;
 import qaVoyagers.dto.ResponseWithoutMessageDto;
+import qaVoyagers.dto.RoleDto;
 import qaVoyagers.dto.TokenDto;
 import qaVoyagers.utils.HttpUtils;
 
 import static qaVoyagers.utils.HttpUtils.ADD_EVENT_COMMENTS_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.ADD_ROLE_TO_USER_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.APPLY_TO_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.CREATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.DELETE_MY_EVENT_ENDPOINT;
@@ -50,8 +52,8 @@ public class EventsTests extends BaseTest {
     }
     @Test
     @DisplayName("Проверка получения списка  events, с участием авторизованного пользователя TESTUSER")
-    void getMyApplicatedEvents_TestUser() {
-        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+    void getMyApplicatedEvents_AliceUser() {
+        token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // Получение списка активных событий с токеном
         EventDto[] activeEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT, 200, token, EventDto[].class);
@@ -72,10 +74,10 @@ public class EventsTests extends BaseTest {
         Assertions.assertTrue(myCreatedEvents.length > 0, "List of active events is empty");
     }
     @Test
-    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    @DisplayName("Проверка удаления event, созданного  авторизованным пользователем TESTUSER")
     void deletetMyEvent_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
-        String eventId = "21";
+        String eventId = "18";
 
 
         //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
@@ -106,7 +108,7 @@ public class EventsTests extends BaseTest {
 
     }
     @Test
-    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    @DisplayName("Проверка удаления НЕ существующего или уже удаленного event,   авторизованным пользователем TESTUSER")
     void deleteNotExistedEvent_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         String eventId = "20";
@@ -249,7 +251,7 @@ public class EventsTests extends BaseTest {
 
     @Test
     @DisplayName("Проверка (Неуспешной) повторной пордачи заявки на участие в активном event  авторизованным пользователем-AliceFromWonderland")
-    void testFirstApplicationToEvent() {
+    void testSecondApplicationToEvent() {
         // Авторизация и получение токена
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
@@ -272,15 +274,15 @@ public class EventsTests extends BaseTest {
     }
 
 
- /*   // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
+    // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
     @Test
     @DisplayName("Проверка (Успешной) подачи заявки на участие в активном event  авторизованным пользователем")
-    void testSecondApplicationToEvent() {
+    void testFirstApplicationToEvent() {
         // Авторизация и получение токена
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "23";
+        String eventId = "8";
 
         //Создание заявки на участие в event
 
@@ -295,11 +297,29 @@ public class EventsTests extends BaseTest {
 
 
         // Отправка запроса на создание события
-       ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ApplyEventRqDto.class);*/
+       ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ApplyEventRqDto.class);
 
 
     }
+    private String userID = "10";
+
+    @Test
+    @DisplayName("Назначение роли администратора пользователю с проверкой назначения")
+    void testAssignAdminRoleToUser() {
+        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+
+        // Присвоение роли
+        ResponseMessageDto roleAdminResponse = putResponseWithToken(
+                RoleDto.builder().roleId(1).build(),
+                ADD_ROLE_TO_USER_ENDPOINT.replace("{userId}", userID),
+                200,
+                token,
+                ResponseMessageDto.class);
+
+        // Проверка ответа
+        Assertions.assertNotNull(roleAdminResponse, "Ответ проверки роли пользователя не получен");
+}}
 
 
 
-}
+

@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit2 tests to event 27.07.2024">
+    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit tests to event 29.07.2024">
+      <change afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/RoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/AdminTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/RegistrationAndLoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/RegistrationAndLoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,8 +94,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.AdminTests.getMyEvents_TestUser.executor": "Run",
+    "JUnit.AdminTests.testAssignAdminRoleToCate.executor": "Run",
+    "JUnit.AdminTests.testAssignAdminRoleToUser.executor": "Run",
     "JUnit.EventsTests.deleteEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.deleteNotExistedEvent_TestUser.executor": "Run",
+    "JUnit.EventsTests.deleteNotMyEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.deletetMyEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.executor": "Run",
     "JUnit.EventsTests.getCommentsAboutEvent.executor": "Run",
@@ -100,6 +109,7 @@
     "JUnit.EventsTests.getMyvents_TestUser.executor": "Run",
     "JUnit.EventsTests.test1.executor": "Run",
     "JUnit.EventsTests.testApplicationToEvent.executor": "Run",
+    "JUnit.EventsTests.testAssignAdminRoleToUser.executor": "Run",
     "JUnit.EventsTests.testCommentsToEvent.executor": "Run",
     "JUnit.EventsTests.testCreateEvent.executor": "Run",
     "JUnit.EventsTests.testFirstApplicationToEvent.executor": "Run",
@@ -120,7 +130,7 @@
     "JUnit.RestAssuredTests.test1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.google.cloudcode.ide_session_index": "20240725_0000",
+    "com.google.cloudcode.ide_session_index": "20240730_0002",
     "git-widget-placeholder": "qa__Voyagers",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Olga Meier/OneDrive/Desktop/VOYAGERS_QA_PROJECT_TEAM9/src/test",
@@ -145,8 +155,8 @@
       <recent name="qaVoyagers.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventsTests.testSecondApplicationToEvent">
-    <configuration name="EventsTests.deleteNotExistedEvent_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AdminTests.getMyEvents_TestUser">
+    <configuration name="AdminTests.getMyEvents_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -155,14 +165,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="deleteNotExistedEvent_TestUser" />
+      <option name="MAIN_CLASS_NAME" value="tests.AdminTests" />
+      <option name="METHOD_NAME" value="getMyEvents_TestUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventsTests.deletetMyEvent_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminTests.testAssignAdminRoleToCate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -171,14 +181,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="deletetMyEvent_TestUser" />
+      <option name="MAIN_CLASS_NAME" value="tests.AdminTests" />
+      <option name="METHOD_NAME" value="testAssignAdminRoleToCate" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventsTests.testCreateEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminTests.testAssignAdminRoleToUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -187,14 +197,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="testCreateEvent" />
+      <option name="MAIN_CLASS_NAME" value="tests.AdminTests" />
+      <option name="METHOD_NAME" value="testAssignAdminRoleToUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventsTests.testFirstApplicationToEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EventsTests.getCommentsAboutEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -204,13 +214,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="testFirstApplicationToEvent" />
+      <option name="METHOD_NAME" value="getCommentsAboutEvent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventsTests.testSecondApplicationToEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EventsTests.testAssignAdminRoleToUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -220,7 +230,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="testSecondApplicationToEvent" />
+      <option name="METHOD_NAME" value="testAssignAdminRoleToUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -228,11 +238,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EventsTests.testSecondApplicationToEvent" />
-        <item itemvalue="JUnit.EventsTests.testCreateEvent" />
-        <item itemvalue="JUnit.EventsTests.testFirstApplicationToEvent" />
-        <item itemvalue="JUnit.EventsTests.deletetMyEvent_TestUser" />
-        <item itemvalue="JUnit.EventsTests.deleteNotExistedEvent_TestUser" />
+        <item itemvalue="JUnit.AdminTests.getMyEvents_TestUser" />
+        <item itemvalue="JUnit.AdminTests.testAssignAdminRoleToUser" />
+        <item itemvalue="JUnit.EventsTests.getCommentsAboutEvent" />
+        <item itemvalue="JUnit.EventsTests.testAssignAdminRoleToUser" />
+        <item itemvalue="JUnit.AdminTests.testAssignAdminRoleToCate" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722072358567</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Commit tests to event 29.07.2024">
+      <option name="closed" value="true" />
+      <created>1722257324202</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722257324202</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -329,21 +347,7 @@
     <MESSAGE value="Commit more  succcessfull tests to event 26.07.2024" />
     <MESSAGE value="Commit tests to event 27.07.2024" />
     <MESSAGE value="Commit2 tests to event 27.07.2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit2 tests to event 27.07.2024" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/tests/EventsTests.java</url>
-          <line>277</line>
-          <properties class="tests.EventsTests" method="testSecondApplicationToEvent">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Commit tests to event 29.07.2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit tests to event 29.07.2024" />
   </component>
 </project>

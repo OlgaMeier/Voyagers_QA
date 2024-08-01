@@ -100,7 +100,7 @@ public class RegistrationAndLoginTests extends BaseTest {
 
     @Test
     @DisplayName("Проверка Login с некорректным email")
-    void test5() {
+    public void test5() {
         LoginBodyDto loginRqBody = LoginBodyDto.builder()
                 .email("dragon@example")
                 .password("Dragon111!")

@@ -20,8 +20,10 @@ import static qaVoyagers.utils.Utils.isNullOrEmpty;
 public class HttpUtils {
 
     public static Properties properties = TestProperties.getINSTANCE().getProperties();
+  //  public static final String BASE_URL= properties.getProperty("base.url");
     public static final String LOGIN_ENDPOINT = properties.getProperty("login.endpoint");
     public static final String REGISTRATION_ENDPOINT = properties.getProperty("registration.endpoint");
+    public static final String GET_LIST_OF_USER = properties.getProperty("getlistOfUser.endpoint");
     public static final String GET_ACTIVE_EVENTS_ENDPOINT = properties.getProperty("getActiveEvents.endpoint");
     public static final String GET_INFO_ABOUT_EVENT_ENDPOINT = properties.getProperty("getInfoAboutEvent.endpoint");
     public static final String GET_ARCHIVE_EVENTS_ENDPOINT = properties.getProperty("getArchiveEvents.endpoint");
@@ -35,6 +37,7 @@ public class HttpUtils {
     public static final String UPDATE_EVENT_ENDPOINT = properties.getProperty("updateEvent.endpoint");
     public static final String ADD_EVENT_COMMENTS_ENDPOINT = properties.getProperty("addEventComments.endpoin");
     public static final String LIST_OF_MY_EVENTS = properties.getProperty("listOfMyEvents.endpoint");
+    public static final String ADD_ROLE_TO_USER_ENDPOINT=properties.getProperty("addRoleToUserEndpoint");
 
     public static <T> T postResponse(Object body, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(POST, endpoint, null, statusCode, body).as(responseClass);
