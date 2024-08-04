@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit2 tests to event 27.07.2024">
+    <list default="true" id="9ff95952-50e7-4670-bd0d-3b49a9c9ab78" name="Changes" comment="Commit tests to event 04.08.2024">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/qaVoyagers/utils/HttpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/EventsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/RegistrationAndLoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/RegistrationAndLoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +22,20 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="VOYAGERS_QA_PROJECT_TEAM9" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="VOYAGERS_QA_PROJECT_TEAM9" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
             </expand>
             <select />
@@ -89,10 +96,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.VOYAGERS_QA_PROJECT_TEAM9 [allureReport].executor": "Run",
+    "Gradle.VOYAGERS_QA_PROJECT_TEAM9 [test].executor": "Run",
+    "JUnit.AdminTests.blockUsers_TestUser.executor": "Run",
+    "JUnit.AdminTests.executor": "Run",
+    "JUnit.AdminTests.getMyEvents_TestUser.executor": "Run",
+    "JUnit.AdminTests.test1AssignAdminRoleToUser.executor": "Run",
+    "JUnit.AdminTests.testAssignAdminRoleToCate.executor": "Run",
+    "JUnit.AdminTests.testAssignAdminRoleToUser.executor": "Run",
+    "JUnit.AdminTests.userGotAdmin_byTestUser.executor": "Run",
     "JUnit.EventsTests.deleteEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.deleteNotExistedEvent_TestUser.executor": "Run",
+    "JUnit.EventsTests.deleteNotMyEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.deletetMyEvent_TestUser.executor": "Run",
     "JUnit.EventsTests.executor": "Run",
+    "JUnit.EventsTests.getActiveEvents.executor": "Run",
+    "JUnit.EventsTests.getArchivedEvents.executor": "Run",
     "JUnit.EventsTests.getCommentsAboutEvent.executor": "Run",
     "JUnit.EventsTests.getInfoAboutEvent.executor": "Run",
     "JUnit.EventsTests.getMyApplicatedEvents_TestUser.executor": "Run",
@@ -100,6 +119,7 @@
     "JUnit.EventsTests.getMyvents_TestUser.executor": "Run",
     "JUnit.EventsTests.test1.executor": "Run",
     "JUnit.EventsTests.testApplicationToEvent.executor": "Run",
+    "JUnit.EventsTests.testAssignAdminRoleToUser.executor": "Run",
     "JUnit.EventsTests.testCommentsToEvent.executor": "Run",
     "JUnit.EventsTests.testCreateEvent.executor": "Run",
     "JUnit.EventsTests.testFirstApplicationToEvent.executor": "Run",
@@ -120,7 +140,7 @@
     "JUnit.RestAssuredTests.test1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.google.cloudcode.ide_session_index": "20240725_0000",
+    "com.google.cloudcode.ide_session_index": "20240802_0002",
     "git-widget-placeholder": "qa__Voyagers",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Olga Meier/OneDrive/Desktop/VOYAGERS_QA_PROJECT_TEAM9/src/test",
@@ -145,8 +165,52 @@
       <recent name="qaVoyagers.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventsTests.testSecondApplicationToEvent">
-    <configuration name="EventsTests.deleteNotExistedEvent_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Gradle.VOYAGERS_QA_PROJECT_TEAM9 [allureReport]">
+    <configuration name="VOYAGERS_QA_PROJECT_TEAM9 [allureReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="allureReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="VOYAGERS_QA_PROJECT_TEAM9 [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="EventsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -156,13 +220,28 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="deleteNotExistedEvent_TestUser" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventsTests.testUpdateEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
+      <option name="METHOD_NAME" value="testUpdateEvent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventsTests.deletetMyEvent_TestUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationAndLoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
       <extension name="coverage">
         <pattern>
@@ -171,68 +250,19 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="deletetMyEvent_TestUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventsTests.testCreateEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="testCreateEvent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventsTests.testFirstApplicationToEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="testFirstApplicationToEvent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventsTests.testSecondApplicationToEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VOYAGERS_QA_PROJECT_TEAM9.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.EventsTests" />
-      <option name="METHOD_NAME" value="testSecondApplicationToEvent" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="tests.RegistrationAndLoginTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EventsTests.testSecondApplicationToEvent" />
-        <item itemvalue="JUnit.EventsTests.testCreateEvent" />
-        <item itemvalue="JUnit.EventsTests.testFirstApplicationToEvent" />
-        <item itemvalue="JUnit.EventsTests.deletetMyEvent_TestUser" />
-        <item itemvalue="JUnit.EventsTests.deleteNotExistedEvent_TestUser" />
+        <item itemvalue="Gradle.VOYAGERS_QA_PROJECT_TEAM9 [allureReport]" />
+        <item itemvalue="Gradle.VOYAGERS_QA_PROJECT_TEAM9 [test]" />
+        <item itemvalue="JUnit.EventsTests.testUpdateEvent" />
+        <item itemvalue="JUnit.EventsTests" />
+        <item itemvalue="JUnit.RegistrationAndLoginTests" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +347,31 @@
       <option name="project" value="LOCAL" />
       <updated>1722072358567</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Commit tests to event 29.07.2024">
+      <option name="closed" value="true" />
+      <created>1722257324202</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722257324202</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Commit tests to event 01.08.2024">
+      <option name="closed" value="true" />
+      <created>1722523536200</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722523536200</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Commit tests to event 04.08.2024">
+      <option name="closed" value="true" />
+      <created>1722790171525</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722790171525</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -329,19 +383,28 @@
     <MESSAGE value="Commit more  succcessfull tests to event 26.07.2024" />
     <MESSAGE value="Commit tests to event 27.07.2024" />
     <MESSAGE value="Commit2 tests to event 27.07.2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit2 tests to event 27.07.2024" />
+    <MESSAGE value="Commit tests to event 29.07.2024" />
+    <MESSAGE value="Commit tests to event 01.08.2024" />
+    <MESSAGE value="Commit tests to event 04.08.2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit tests to event 04.08.2024" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/tests/EventsTests.java</url>
-          <line>277</line>
-          <properties class="tests.EventsTests" method="testSecondApplicationToEvent">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/build.gradle</url>
+          <line>38</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/build.gradle</url>
+          <line>33</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/build.gradle</url>
+          <line>42</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -21,13 +21,13 @@ public class BaseTest {
         RestAssured.baseURI = properties.getProperty("base.url");
         //Указываем в настройках RestAssured наш путь для запросов
         //v1
-        RestAssured.basePath = properties.getProperty("base.version");
+       RestAssured.basePath = properties.getProperty("base.version");
         //https://contactapp-telran-backend.herokuapp.com/v1  - дальше это эндпоинты для работы /user/login/usernamepassword";
 
 
     }
 
-    static LoginBodyDto getTestUserLoginBody() {
+    public static LoginBodyDto getTestUserLoginBody() {
         return LoginBodyDto.builder()
                 .email(properties.getProperty("testuser.email"))
                 .password(properties.getProperty("testuser.password"))
@@ -43,7 +43,7 @@ public class BaseTest {
 
 
 
-    static RegistrationUserDto getRegistrationUserBodyTestUser() {
+    public static RegistrationUserDto getRegistrationUserBodyTestUser() {
 
         return RegistrationUserDto.builder()
                 .firstName(properties.getProperty(" testuser.firstname"))
@@ -60,7 +60,7 @@ public class BaseTest {
                 .build();
     }
 
-    static RegistrationUserDto getRegistrationUserBodyAliceUser() {
+   public static RegistrationUserDto getRegistrationUserBodyAliceUser() {
 
         return RegistrationUserDto.builder()
                 .firstName(properties.getProperty("aliceUser.firstname"))

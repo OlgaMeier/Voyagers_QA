@@ -12,10 +12,12 @@ import qaVoyagers.dto.EventDto;
 import qaVoyagers.dto.EventsDto;
 import qaVoyagers.dto.ResponseMessageDto;
 import qaVoyagers.dto.ResponseWithoutMessageDto;
+import qaVoyagers.dto.RoleDto;
 import qaVoyagers.dto.TokenDto;
 import qaVoyagers.utils.HttpUtils;
 
 import static qaVoyagers.utils.HttpUtils.ADD_EVENT_COMMENTS_ENDPOINT;
+import static qaVoyagers.utils.HttpUtils.ADD_ROLE_TO_USER_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.APPLY_TO_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.CREATE_EVENT_ENDPOINT;
 import static qaVoyagers.utils.HttpUtils.DELETE_MY_EVENT_ENDPOINT;
@@ -50,8 +52,8 @@ public class EventsTests extends BaseTest {
     }
     @Test
     @DisplayName("Проверка получения списка  events, с участием авторизованного пользователя TESTUSER")
-    void getMyApplicatedEvents_TestUser() {
-        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
+    void getMyApplicatedEvents_AliceUser() {
+        token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // Получение списка активных событий с токеном
         EventDto[] activeEvents = HttpUtils.getResponseWithToken(HttpUtils.HttpMethods.GET, GET_MY_EVENTS_WITH_MY_PARTICIPANTS_ENDPOINT, 200, token, EventDto[].class);
@@ -72,10 +74,10 @@ public class EventsTests extends BaseTest {
         Assertions.assertTrue(myCreatedEvents.length > 0, "List of active events is empty");
     }
     @Test
-    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    @DisplayName("Проверка удаления event, созданного  авторизованным пользователем TESTUSER")
     void deletetMyEvent_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
-        String eventId = "21";
+        String eventId = "26";
 
 
         //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
@@ -106,7 +108,7 @@ public class EventsTests extends BaseTest {
 
     }
     @Test
-    @DisplayName("Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER")
+    @DisplayName("Проверка удаления НЕ существующего или уже удаленного event,   авторизованным пользователем TESTUSER")
     void deleteNotExistedEvent_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         String eventId = "20";
@@ -123,13 +125,13 @@ public class EventsTests extends BaseTest {
 
     }
     @Test
-    @DisplayName("Проверка получения списка пршедших - архивных events без авторизации")
+    @DisplayName("Проверка получения списка прошедших - архивных events без авторизации")
     void getArchivedEvents() {
 
-        EventsDto archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto.class);
+        EventsDto[] archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto[].class);
 
         Assertions.assertNotNull(archivedEvents, "List of archived events is empty");
-        Assertions.assertNotNull(archivedEvents.getEvents(), "List of active events is empty");
+        Assertions.assertNotNull(archivedEvents.getClass(), "List of active events is empty");
 
     }
 
@@ -177,10 +179,10 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         // Создание объекта события
         EventDto newEvent = EventDto.builder()
-                .title("Travel to out of Solar sistem")
+                .title("Travel to Jupiter-7")
                 .addressStart("Cosmodrom, Planet Earth")
-                .startDateTime("2024-10-10T10:00:00")
-                .addressEnd("Cosmodrom, Venus")
+                .startDateTime("2024-12-12T10:00:00")
+                .addressEnd("Cosmodrom, Jupiter-7")
                 .endDateTime("2024-10-10T17:00:00")
                 .cost(null)
                 .maximal_number_of_participants(10)
@@ -201,15 +203,15 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "19";
+        String eventId = "27";
 
         // Поиск существующего с
         EventDto existingEvent = getResponse(token, UPDATE_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, EventDto.class);
-        Assertions.assertEquals(19, existingEvent.getId(), "Event ID does not match");
+        Assertions.assertEquals(27, existingEvent.getId(), "Event ID does not match");
         //Assertions.assertNotNull(existingEvent, "Event not found");
-        Assertions.assertEquals("Travel to the Moon", existingEvent.getTitle(), "Event has other title");
+        Assertions.assertEquals("Travel to out of Solar system", existingEvent.getTitle(), "Event has other title");
 
-        existingEvent.setTitle("Travel to the Sun");
+        existingEvent.setTitle("Travel to Venus");
 
 
         // Отправка запроса на обновленеи Event
@@ -219,7 +221,7 @@ public class EventsTests extends BaseTest {
         // Проверка успешного обновления event
 
         Assertions.assertNotNull(updatedEvent, "Event update failed");
-        Assertions.assertEquals("Travel to the Sun", updatedEvent.getTitle(), "Event has other title");
+        Assertions.assertEquals("Travel to Venus", updatedEvent.getTitle(), "Event has other title");
     }
 
     @Test
@@ -249,17 +251,17 @@ public class EventsTests extends BaseTest {
 
     @Test
     @DisplayName("Проверка (Неуспешной) повторной пордачи заявки на участие в активном event  авторизованным пользователем-AliceFromWonderland")
-    void testFirstApplicationToEvent() {
+    void testSecondApplicationToEvent() {
         // Авторизация и получение токена
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "22";
+        String eventId = "33";
 
         //Создание заявки на участие в event
 
         ApplyEventRqDto secondApplicationToEvent = ApplyEventRqDto.builder()
-                .application("I wish to travel  to the Sun")
+                .application("I wish to participate in the travel")
                 .build();
 
       ResponseMessageDto submittedAplication = postResponseWithToken(secondApplicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ResponseMessageDto.class);
@@ -272,15 +274,15 @@ public class EventsTests extends BaseTest {
     }
 
 
- /*   // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
+    // Повторная подача заявки на уже зарегестрированный к участию event №13 Berlin Reichstag (НЕГАТИВНЫЙ ТЕСТ)
     @Test
     @DisplayName("Проверка (Успешной) подачи заявки на участие в активном event  авторизованным пользователем")
-    void testSecondApplicationToEvent() {
+    void testFirstApplicationToEvent() {
         // Авторизация и получение токена
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "23";
+        String eventId = "34";
 
         //Создание заявки на участие в event
 
@@ -295,7 +297,7 @@ public class EventsTests extends BaseTest {
 
 
         // Отправка запроса на создание события
-       ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ApplyEventRqDto.class);*/
+       ApplyEventRqDto submittedAplication = postResponseWithToken(applicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, token, ApplyEventRqDto.class);
 
 
     }
@@ -303,3 +305,7 @@ public class EventsTests extends BaseTest {
 
 
 }
+
+
+
+

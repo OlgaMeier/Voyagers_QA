@@ -1,0 +1,1 @@
+{"uuid":"b8fb762e-ddc1-4d88-b31f-b06e78d7da07","name":"Проверка удаления event,НЕ созданного  авторизованным пользователем TESTUSER","children":["6fdef99e-e869-48b4-b2d2-3d61aad16e54"],"befores":[],"afters":[],"start":1722791745729,"stop":1722791745850}

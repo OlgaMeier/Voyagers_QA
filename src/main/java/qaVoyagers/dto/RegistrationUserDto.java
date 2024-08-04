@@ -10,6 +10,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class RegistrationUserDto {
+
     private String firstName;
     private String lastName;
     private String dateOfBirth;

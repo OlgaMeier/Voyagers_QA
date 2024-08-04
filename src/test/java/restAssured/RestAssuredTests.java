@@ -43,6 +43,7 @@ public class RestAssuredTests {
         System.out.println(tokenDto.getAccessToken());
         System.out.println("");
         System.out.println("---------------------------");
+       // localhost:5432/events
     }
 }
 
