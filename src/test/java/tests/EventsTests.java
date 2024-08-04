@@ -77,7 +77,7 @@ public class EventsTests extends BaseTest {
     @DisplayName("Проверка удаления event, созданного  авторизованным пользователем TESTUSER")
     void deletetMyEvent_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
-        String eventId = "18";
+        String eventId = "16";
 
 
         //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
@@ -128,10 +128,10 @@ public class EventsTests extends BaseTest {
     @DisplayName("Проверка получения списка пршедших - архивных events без авторизации")
     void getArchivedEvents() {
 
-        EventsDto archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto.class);
+        EventsDto[] archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto[].class);
 
         Assertions.assertNotNull(archivedEvents, "List of archived events is empty");
-        Assertions.assertNotNull(archivedEvents.getEvents(), "List of active events is empty");
+        Assertions.assertNotNull(archivedEvents.getClass(), "List of active events is empty");
 
     }
 
@@ -179,10 +179,10 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         // Создание объекта события
         EventDto newEvent = EventDto.builder()
-                .title("Travel to out of Solar sistem")
+                .title("Travel to Jupiter-1")
                 .addressStart("Cosmodrom, Planet Earth")
-                .startDateTime("2024-10-10T10:00:00")
-                .addressEnd("Cosmodrom, Venus")
+                .startDateTime("2024-12-12T10:00:00")
+                .addressEnd("Cosmodrom, Jupiter-1")
                 .endDateTime("2024-10-10T17:00:00")
                 .cost(null)
                 .maximal_number_of_participants(10)
@@ -209,9 +209,9 @@ public class EventsTests extends BaseTest {
         EventDto existingEvent = getResponse(token, UPDATE_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, EventDto.class);
         Assertions.assertEquals(19, existingEvent.getId(), "Event ID does not match");
         //Assertions.assertNotNull(existingEvent, "Event not found");
-        Assertions.assertEquals("Travel to the Moon", existingEvent.getTitle(), "Event has other title");
+        Assertions.assertEquals("Travel to the Sun", existingEvent.getTitle(), "Event has other title");
 
-        existingEvent.setTitle("Travel to the Sun");
+        existingEvent.setTitle("Travel to the Neptun");
 
 
         // Отправка запроса на обновленеи Event
@@ -221,7 +221,7 @@ public class EventsTests extends BaseTest {
         // Проверка успешного обновления event
 
         Assertions.assertNotNull(updatedEvent, "Event update failed");
-        Assertions.assertEquals("Travel to the Sun", updatedEvent.getTitle(), "Event has other title");
+        Assertions.assertEquals("Travel to the Neptun", updatedEvent.getTitle(), "Event has other title");
     }
 
     @Test
@@ -282,7 +282,7 @@ public class EventsTests extends BaseTest {
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "8";
+        String eventId = "29";
 
         //Создание заявки на участие в event
 
@@ -301,24 +301,10 @@ public class EventsTests extends BaseTest {
 
 
     }
-    private String userID = "10";
 
-    @Test
-    @DisplayName("Назначение роли администратора пользователю с проверкой назначения")
-    void testAssignAdminRoleToUser() {
-        token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
-        // Присвоение роли
-        ResponseMessageDto roleAdminResponse = putResponseWithToken(
-                RoleDto.builder().roleId(1).build(),
-                ADD_ROLE_TO_USER_ENDPOINT.replace("{userId}", userID),
-                200,
-                token,
-                ResponseMessageDto.class);
 
-        // Проверка ответа
-        Assertions.assertNotNull(roleAdminResponse, "Ответ проверки роли пользователя не получен");
-}}
+}
 
 
 

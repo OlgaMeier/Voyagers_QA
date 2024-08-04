@@ -10,6 +10,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class UserDto {
-    private String userId;
+
+    private int userId;
     private  RoleDto roleId;
 }

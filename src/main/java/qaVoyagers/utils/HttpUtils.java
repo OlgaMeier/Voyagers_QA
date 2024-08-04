@@ -38,6 +38,7 @@ public class HttpUtils {
     public static final String ADD_EVENT_COMMENTS_ENDPOINT = properties.getProperty("addEventComments.endpoin");
     public static final String LIST_OF_MY_EVENTS = properties.getProperty("listOfMyEvents.endpoint");
     public static final String ADD_ROLE_TO_USER_ENDPOINT=properties.getProperty("addRoleToUserEndpoint");
+    public static final String BLOCK_USER_BY_ADMIN=properties.getProperty("blockUserBzAdmin");
 
     public static <T> T postResponse(Object body, String endpoint, int statusCode, Class<T> responseClass) {
         return getResponse(POST, endpoint, null, statusCode, body).as(responseClass);
