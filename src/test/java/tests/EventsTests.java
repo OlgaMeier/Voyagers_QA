@@ -77,7 +77,7 @@ public class EventsTests extends BaseTest {
     @DisplayName("Проверка удаления event, созданного  авторизованным пользователем TESTUSER")
     void deletetMyEvent_TestUser() {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
-        String eventId = "16";
+        String eventId = "26";
 
 
         //ErrorMessageDto response = getResponse((HttpUtils.HttpMethods.DELETE, DELETE_MY_EVENT_ENDPOINT.replace("{eventId}", eventId), 403, ErrorMessageDto.class);
@@ -125,7 +125,7 @@ public class EventsTests extends BaseTest {
 
     }
     @Test
-    @DisplayName("Проверка получения списка пршедших - архивных events без авторизации")
+    @DisplayName("Проверка получения списка прошедших - архивных events без авторизации")
     void getArchivedEvents() {
 
         EventsDto[] archivedEvents = getResponse(null, GET_ARCHIVE_EVENTS_ENDPOINT, 200, EventsDto[].class);
@@ -179,10 +179,10 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
         // Создание объекта события
         EventDto newEvent = EventDto.builder()
-                .title("Travel to Jupiter-1")
+                .title("Travel to Jupiter-7")
                 .addressStart("Cosmodrom, Planet Earth")
                 .startDateTime("2024-12-12T10:00:00")
-                .addressEnd("Cosmodrom, Jupiter-1")
+                .addressEnd("Cosmodrom, Jupiter-7")
                 .endDateTime("2024-10-10T17:00:00")
                 .cost(null)
                 .maximal_number_of_participants(10)
@@ -203,15 +203,15 @@ public class EventsTests extends BaseTest {
         token = postResponse(getTestUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "19";
+        String eventId = "27";
 
         // Поиск существующего с
         EventDto existingEvent = getResponse(token, UPDATE_EVENT_ENDPOINT.replace("{eventId}", eventId), 200, EventDto.class);
-        Assertions.assertEquals(19, existingEvent.getId(), "Event ID does not match");
+        Assertions.assertEquals(27, existingEvent.getId(), "Event ID does not match");
         //Assertions.assertNotNull(existingEvent, "Event not found");
-        Assertions.assertEquals("Travel to the Sun", existingEvent.getTitle(), "Event has other title");
+        Assertions.assertEquals("Travel to out of Solar system", existingEvent.getTitle(), "Event has other title");
 
-        existingEvent.setTitle("Travel to the Neptun");
+        existingEvent.setTitle("Travel to Venus");
 
 
         // Отправка запроса на обновленеи Event
@@ -221,7 +221,7 @@ public class EventsTests extends BaseTest {
         // Проверка успешного обновления event
 
         Assertions.assertNotNull(updatedEvent, "Event update failed");
-        Assertions.assertEquals("Travel to the Neptun", updatedEvent.getTitle(), "Event has other title");
+        Assertions.assertEquals("Travel to Venus", updatedEvent.getTitle(), "Event has other title");
     }
 
     @Test
@@ -256,12 +256,12 @@ public class EventsTests extends BaseTest {
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "22";
+        String eventId = "33";
 
         //Создание заявки на участие в event
 
         ApplyEventRqDto secondApplicationToEvent = ApplyEventRqDto.builder()
-                .application("I wish to travel  to the Sun")
+                .application("I wish to participate in the travel")
                 .build();
 
       ResponseMessageDto submittedAplication = postResponseWithToken(secondApplicationToEvent, APPLY_TO_EVENT_ENDPOINT.replace("{eventId}", eventId), 409, token, ResponseMessageDto.class);
@@ -282,7 +282,7 @@ public class EventsTests extends BaseTest {
         token = postResponse(getAliceUserLoginBody(), LOGIN_ENDPOINT, 200, TokenDto.class).getAccessToken();
 
         // ID существующего события, которое мы будем обновлять
-        String eventId = "29";
+        String eventId = "34";
 
         //Создание заявки на участие в event
 

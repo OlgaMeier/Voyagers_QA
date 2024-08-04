@@ -73,9 +73,9 @@ public class RegistrationAndLoginTests extends BaseTest {
     @DisplayName("Проверка успешной регистрации-AliceFromWonderland")
     void testCreateAliceFromWonderland3() {
         RegistrationUserDto registrationBody = RegistrationUserDto.builder()
-                .firstName("Alice333")
-                .lastName("Alice333")
-                .email("Alice333@example")
+                .firstName("AliceBig")
+                .lastName("AliceBig")
+                .email("AliceBig@example")
                 .password("Alice1234!")
                 .dateOfBirth("2001-01-01")
                 .phone("+1234567899")
